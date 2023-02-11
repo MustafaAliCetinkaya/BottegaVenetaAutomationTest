@@ -2,7 +2,7 @@
 Feature: Register User
 
   Scenario: Test01 Register User
-    Given On the user automation homepage
+    Given The user is on the homepage
     Then  Verify that home page is visible successfully
     And   Click on Signup  Login button
     Then  Verify New User Signup! is visible
