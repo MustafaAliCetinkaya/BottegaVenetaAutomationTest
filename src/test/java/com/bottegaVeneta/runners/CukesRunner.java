@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "stepDefinitions",
         dryRun = false,
-        tags = "@Regression and @login",
+        tags = "TC01",
         publish = false
 
 )
