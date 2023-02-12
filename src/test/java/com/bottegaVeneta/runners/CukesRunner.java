@@ -14,7 +14,7 @@ dryRun = false --> this will turn off dryRun, and our code will run as expected.
         features = "src/test/resources/features",
         glue = "stepDefinitions",
         tags = "@TC01",
-        dryRun = false          //False-->Means directly start the tests / True-->Check for the missing methods, do not run
+        dryRun = false
 )
 
 public class CukesRunner {
