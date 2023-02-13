@@ -68,6 +68,8 @@ public class BottegaVeneta {
     public WebElement closeRequestReceivedWindow;
     @FindBy(css = "div.c-topsearch__result input.c-form__input")
     public WebElement searchBox;
+    @FindBy(css = "button.c-topsearch__button")
+    public WebElement searchIcon;
 
     public void verifyPlaceholderText(){
         String actualPlaceholderText=searchBox.getAttribute("placeholder");
@@ -75,4 +77,12 @@ public class BottegaVeneta {
         Assert.assertEquals(expectedPlaceholderText,actualPlaceholderText);
 
     }
+
+    public void enterAnyItemIntoTheSearchBox(){
+        searchIcon.click();
+        searchBox.sendKeys("bags");
+    }
+
+    @FindBy(css = "ul.c-search__filtersbody li.c-search__filtersitem.c-search__filtersitem--active a.c-search__itemlink")
+    public WebElement allResultsText;
 }

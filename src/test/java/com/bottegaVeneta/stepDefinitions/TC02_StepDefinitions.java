@@ -8,6 +8,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
 public class TC02_StepDefinitions {
@@ -16,6 +17,8 @@ public class TC02_StepDefinitions {
     @Given("Open the Application URL in any supported browser")
     public void open_the_application_url_in_any_supported_browser() {
         Driver.getDriver().get(ConfigurationReader.getProperty("env"));
+        Driver.getDriver().navigate().refresh();
+        ReusableMethods.jsScrollClick(pageObject.acceptAllCookiesButton);
     }
 
     @When("Do not enter anything into the Search text box field")
@@ -36,10 +39,12 @@ public class TC02_StepDefinitions {
 
     @When("Enter any existing product name into the Search text box field")
     public void enterAnyExistingProductNameIntoTheSearchTextBoxField() {
+        pageObject.enterAnyItemIntoTheSearchBox();
     }
 
     @Then("Searched product should be displayed in the search results")
     public void searchedProductShouldBeDisplayedInTheSearchResults() {
+        Assert.assertTrue(pageObject.allResultsText.isDisplayed());
     }
 
     @When("Enter non existing product name into the Search text box field")
