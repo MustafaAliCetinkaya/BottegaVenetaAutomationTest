@@ -70,6 +70,8 @@ public class BottegaVeneta {
     public WebElement searchBox;
     @FindBy(css = "button.c-topsearch__button")
     public WebElement searchIcon;
+    @FindBy(xpath = "//p[contains(text(),'Unfortunately there are no results corresponding to your query.')]")
+    public WebElement searchResultErrorMessage;
 
     public void verifyPlaceholderText(){
         String actualPlaceholderText=searchBox.getAttribute("placeholder");
@@ -78,11 +80,18 @@ public class BottegaVeneta {
 
     }
 
-    public void enterAnyItemIntoTheSearchBox(){
+    public void enterAnyItemIntoTheSearchBox(String product){
         searchIcon.click();
-        searchBox.sendKeys("bags");
+        searchBox.sendKeys(product);
     }
 
     @FindBy(css = "ul.c-search__filtersbody li.c-search__filtersitem.c-search__filtersitem--active a.c-search__itemlink")
     public WebElement allResultsText;
+
+    public void verifySearchResultErrorContent(){
+        String expectedErrorMessageContent="We didn’t find any any items corrisponding exactly to your query, please search for a different item.";
+        String actualErrorMessageContent=searchResultErrorMessage.getText();
+        Assert.assertEquals(expectedErrorMessageContent,actualErrorMessageContent);
+
+    }
 }

@@ -23,12 +23,12 @@ public class TC02_StepDefinitions {
 
     @When("Do not enter anything into the Search text box field")
     public void do_not_enter_anything_into_the_search_text_box_field() {
-        ReusableMethods.jsScroll(pageObject.searchBox);
+        ReusableMethods.jsClick(pageObject.searchIcon);
+        ReusableMethods.jsClick(pageObject.searchBox);
     }
 
     @And("Click on the enter button")
     public void click_on_the_enter_button() {
-        ReusableMethods.jsClick(pageObject.searchBox);
         ReusableMethods.getActions().sendKeys(Keys.ENTER).perform();
     }
 
@@ -39,7 +39,7 @@ public class TC02_StepDefinitions {
 
     @When("Enter any existing product name into the Search text box field")
     public void enterAnyExistingProductNameIntoTheSearchTextBoxField() {
-        pageObject.enterAnyItemIntoTheSearchBox();
+        pageObject.enterAnyItemIntoTheSearchBox("bags");
     }
 
     @Then("Searched product should be displayed in the search results")
@@ -49,14 +49,17 @@ public class TC02_StepDefinitions {
 
     @When("Enter non existing product name into the Search text box field")
     public void enterNonExistingProductNameIntoTheSearchTextBoxField() {
+        pageObject.enterAnyItemIntoTheSearchBox("iMac");
     }
 
     @Then("Search error text should be displayed in the Search Results page")
     public void searchErrorTextShouldBeDisplayedInTheSearchResultsPage() {
+        Assert.assertTrue(pageObject.searchResultErrorMessage.isDisplayed());
     }
 
-    @Then("There is no product that matches the search criteria should be displayed in the Search Results page")
+    @Then("All products at the store should be displayed in the Search Results page")
     public void thereIsNoProductThatMatchesTheSearchCriteriaShouldBeDisplayedInTheSearchResultsPage() {
+        Assert.assertTrue(pageObject.allResultsText.isDisplayed());
     }
 
 }

@@ -26,4 +26,4 @@ Feature: Search Functionality
   Scenario: Validate searching without providing any Product Name
     When  Do not enter anything into the Search text box field
     And   Click on the enter button
-    Then  There is no product that matches the search criteria should be displayed in the Search Results page
+    Then  All products at the store should be displayed in the Search Results page
