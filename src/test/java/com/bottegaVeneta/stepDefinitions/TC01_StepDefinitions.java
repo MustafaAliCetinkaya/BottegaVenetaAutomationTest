@@ -71,6 +71,7 @@ public class TC01_StepDefinitions {
     public void verify_that_request_received_is_visible() {
         ReusableMethods.jsScrollClick(pageObject.requestReceivedWindow);
         Assert.assertTrue(pageObject.requestReceivedWindow.isDisplayed());
+        pageObject.closeRequestReceivedWindow.click();
     }
 
     @Then("Click Check my mailbox to activate my account button")

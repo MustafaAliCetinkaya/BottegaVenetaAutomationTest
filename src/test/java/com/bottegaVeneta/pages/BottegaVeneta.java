@@ -2,6 +2,7 @@ package com.bottegaVeneta.pages;
 
 import com.bottegaVeneta.utilities.Driver;
 import com.bottegaVeneta.utilities.ReusableMethods;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -65,5 +66,13 @@ public class BottegaVeneta {
     public WebElement requestReceivedWindow;
     @FindBy(xpath = "(//button[@data-ref=\"closePopinTrigger\"])[11]")
     public WebElement closeRequestReceivedWindow;
+    @FindBy(css = "div.c-topsearch__result input.c-form__input")
+    public WebElement searchBox;
 
+    public void verifyPlaceholderText(){
+        String actualPlaceholderText=searchBox.getAttribute("placeholder");
+        String expectedPlaceholderText="Type here";
+        Assert.assertEquals(expectedPlaceholderText,actualPlaceholderText);
+
+    }
 }

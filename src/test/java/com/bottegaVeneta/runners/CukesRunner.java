@@ -11,9 +11,10 @@ dryRun = false --> this will turn off dryRun, and our code will run as expected.
 */
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        plugin = "html:target/cucumber-report.html",
         features = "src/test/resources/features",
-        glue = "stepDefinitions",
-        tags = "@TC01",
+        glue = "com/bottegaVeneta/stepDefinitions",
+        tags = "@TC02 and @Placeholder",
         dryRun = false
 )
 
