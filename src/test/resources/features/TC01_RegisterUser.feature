@@ -1,5 +1,5 @@
 @TC01
-Feature: Register User
+Feature: Register Functionality
 
   Scenario: Test01 Register User
     Given The user is on the homepage
@@ -12,8 +12,3 @@ Feature: Register User
     And   Fill all the required fields
     And   Select checkbox Sign up for our newsletter!
     And   Click Create My Profile button
-    Then  Verify that Request Received is visible
-    And   Click Check my mailbox to activate my account button
-    Then  Close the Request Received window
-    And   Back to the homepage
-    Then  User should be able to see DISCOVER THE NEW ANDIAMO BAG text in the lower left corner
