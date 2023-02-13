@@ -4,7 +4,7 @@ Feature: Search Functionality
   Background: For the scenarios in the Search Functionality, user is expected to be on on the library login page
     Given Open the Application URL in any supported browser
 
-@Placeholder
+  @Placeholder
   Scenario: Validate search box has placeholder
     When  Do not enter anything into the Search text box field
     And   Click on the enter button

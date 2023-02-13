@@ -1,10 +1,11 @@
 @TC01
 Feature: Register Functionality
 
+  Background: For the scenarios in the Search Functionality, user is expected to be on on the library login page
+    Given Open the Application URL in any supported browser
+
   Scenario: Test01 Register User
-    Given The user is on the homepage
     Then  Verify that home page is visible successfully
-    And   Click on Go to accept all cookies button
     And   Click on my account button from the left hand side menu
     Then  Verify New Customer is visible
     And   Click on the create my profile button

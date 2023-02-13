@@ -12,20 +12,10 @@ import org.junit.Assert;
 public class TC01_StepDefinitions {
     BottegaVeneta pageObject = new BottegaVeneta();
 
-    @Given("The user is on the homepage")
-    public void the_user_is_on_the_homepage() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("env"));
-    }
 
     @Then("Verify that home page is visible successfully")
     public void verify_that_home_page_is_visible_successfully() {
         Assert.assertEquals("Bottega Veneta® GB | Official Website", Driver.getDriver().getTitle());
-    }
-
-    @And("Click on Go to accept all cookies button")
-    public void clickOnGoToInternationalVersionButton() {
-        Driver.getDriver().navigate().refresh();
-        ReusableMethods.jsScrollClick(pageObject.acceptAllCookiesButton);
     }
 
     @Then("Click on my account button from the left hand side menu")
@@ -67,31 +57,7 @@ public class TC01_StepDefinitions {
         ReusableMethods.jsScrollClick(pageObject.createMyProfileButton);
     }
 
-    @Then("Verify that Request Received is visible")
-    public void verify_that_request_received_is_visible() {
-        ReusableMethods.jsScrollClick(pageObject.requestReceivedWindow);
-        Assert.assertTrue(pageObject.requestReceivedWindow.isDisplayed());
-        pageObject.closeRequestReceivedWindow.click();
-    }
 
-    @Then("Click Check my mailbox to activate my account button")
-    public void click_check_my_mailbox_to_activate_my_account_button() {
 
-    }
-
-    @Then("Close the Request Received window")
-    public void close_the_request_received_window() {
-
-    }
-
-    @Then("Back to the homepage")
-    public void back_to_the_homepage() {
-
-    }
-
-    @Then("User should be able to see DISCOVER THE NEW ANDIAMO BAG text in the lower left corner")
-    public void user_should_be_able_to_see_discover_the_new_andiamo_bag_text_in_the_lower_left_corner() {
-
-    }
 
 }
