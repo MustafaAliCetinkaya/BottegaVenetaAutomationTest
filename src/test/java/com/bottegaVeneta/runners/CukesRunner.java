@@ -14,7 +14,7 @@ dryRun = false --> this will turn off dryRun, and our code will run as expected.
         plugin = "html:target/cucumber-report.html",
         features = "src/test/resources/features",
         glue = "com/bottegaVeneta/stepDefinitions",
-        tags = "@TC02 and @Placeholder",
+        tags = "@TC01",
         dryRun = false
 )
 
