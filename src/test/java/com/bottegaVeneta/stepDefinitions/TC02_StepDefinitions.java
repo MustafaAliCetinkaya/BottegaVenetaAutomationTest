@@ -62,4 +62,23 @@ public class TC02_StepDefinitions {
         Assert.assertTrue(pageObject.allResultsText.isDisplayed());
     }
 
+    @And("Click on any item from the search results")
+    public void clickOnAnyItemFromTheSearchResults() {
+        pageObject.selectAnyItemFromSearchResult();
+    }
+
+    @Then("User should be able to see the product name header")
+    public void userShouldBeAbleToSeeTheProductNameHeader() {
+        Assert.assertTrue(pageObject.productHeaderText.isDisplayed());
+    }
+
+    @And("Click on the product details button")
+    public void clickOnTheProductDetailsButton() {
+        pageObject.productDetailsButton.click();
+    }
+
+    @Then("User should be able to see the all product details \\(Made in, material, product code, other details)")
+    public void userShouldBeAbleToSeeTheAllProductDetailsMadeInMaterialProductCodeOtherDetails() {
+        pageObject.verifyAllProductDetailsVisibility();
+    }
 }

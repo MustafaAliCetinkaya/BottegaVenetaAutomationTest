@@ -15,6 +15,11 @@ Feature: Search Functionality
     When  Enter any existing product name into the Search text box field
     And   Click on the enter button
     Then  Searched product should be displayed in the search results
+    And   Click on any item from the search results
+    Then  User should be able to see the product name header
+    And   Click on the product details button
+    Then  User should be able to see the all product details (Made in, material, product code, other details)
+
 
   @NonExistingProduct
   Scenario: Validate searching with a non existing Product

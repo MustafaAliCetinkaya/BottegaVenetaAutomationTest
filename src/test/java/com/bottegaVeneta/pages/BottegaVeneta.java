@@ -44,7 +44,7 @@ public class BottegaVeneta {
                 .sendKeys(Keys.TAB)
                 .sendKeys(ReusableMethods.getFaker().name().lastName())
                 .sendKeys(Keys.TAB)
-                .sendKeys(ReusableMethods.getFaker().date().birthday(18,100)+"")
+                .sendKeys(ReusableMethods.getFaker().date().birthday(18, 100) + "")
                 .sendKeys(Keys.TAB)
                 .sendKeys(ReusableMethods.getFaker().internet().emailAddress())
                 .sendKeys(Keys.TAB)
@@ -56,7 +56,7 @@ public class BottegaVeneta {
     public WebElement selectBox;
 
     public void setSelectCountryDropdown() {
-        Select selectCountryDropdown=new Select(selectBox);
+        Select selectCountryDropdown = new Select(selectBox);
         selectCountryDropdown.selectByIndex(11);
         ReusableMethods.jsScrollClick(privacyPolicyBox);
         ReusableMethods.jsScrollClick(signupNewsletterBox);
@@ -81,14 +81,14 @@ public class BottegaVeneta {
     @FindBy(xpath = "//p[contains(text(),'Unfortunately there are no results corresponding to your query.')]")
     public WebElement searchResultErrorMessage;
 
-    public void verifyPlaceholderText(){
-        String actualPlaceholderText=searchBox.getAttribute("placeholder");
-        String expectedPlaceholderText="Type here";
-        Assert.assertEquals(expectedPlaceholderText,actualPlaceholderText);
+    public void verifyPlaceholderText() {
+        String actualPlaceholderText = searchBox.getAttribute("placeholder");
+        String expectedPlaceholderText = "Type here";
+        Assert.assertEquals(expectedPlaceholderText, actualPlaceholderText);
 
     }
 
-    public void enterAnyItemIntoTheSearchBox(String product){
+    public void enterAnyItemIntoTheSearchBox(String product) {
         searchIcon.click();
         searchBox.sendKeys(product);
     }
@@ -96,10 +96,10 @@ public class BottegaVeneta {
     @FindBy(css = "ul.c-search__filtersbody li.c-search__filtersitem.c-search__filtersitem--active a.c-search__itemlink")
     public WebElement allResultsText;
 
-    public void verifySearchResultErrorContent(){
-        String expectedErrorMessageContent="We didn’t find any any items corrisponding exactly to your query, please search for a different item.";
-        String actualErrorMessageContent=searchResultErrorMessage.getText();
-        Assert.assertEquals(expectedErrorMessageContent,actualErrorMessageContent);
+    public void verifySearchResultErrorContent() {
+        String expectedErrorMessageContent = "We didn’t find any any items corrisponding exactly to your query, please search for a different item.";
+        String actualErrorMessageContent = searchResultErrorMessage.getText();
+        Assert.assertEquals(expectedErrorMessageContent, actualErrorMessageContent);
 
     }
 
@@ -109,11 +109,11 @@ public class BottegaVeneta {
     @FindAll(@FindBy(css = "div.c-form__error p"))
     public List<WebElement> allWarningMessages;
 
-    public void verifyAllWarningMessages(){
-        int expectedNumberOfAllWarningMessages=7;
-        int actualNumberOfAllWarningMessages=allWarningMessages.size();
+    public void verifyAllWarningMessages() {
+        int expectedNumberOfAllWarningMessages = 7;
+        int actualNumberOfAllWarningMessages = allWarningMessages.size();
         System.out.println(actualNumberOfAllWarningMessages);
-        Assert.assertEquals(expectedNumberOfAllWarningMessages,actualNumberOfAllWarningMessages);
+        Assert.assertEquals(expectedNumberOfAllWarningMessages, actualNumberOfAllWarningMessages);
     }
 
     @FindBy(css = "h1.c-storelocator__title")
@@ -123,23 +123,24 @@ public class BottegaVeneta {
     @FindBy(css = "select[data-ref=\"city\"]")
     public WebElement selectCityButton;
 
-    public void verifyStoreFinderCountrySelection(){
-        Select selectCountry=new Select(selectCountryButton);
+    public void verifyStoreFinderCountrySelection() {
+        Select selectCountry = new Select(selectCountryButton);
 
-        List<WebElement>allCountries= selectCountry.getAllSelectedOptions();
+        List<WebElement> allCountries = selectCountry.getAllSelectedOptions();
 
-        Random random=new Random();
-        int index= random.nextInt(allCountries.size());
+        Random random = new Random();
+        int index = random.nextInt(allCountries.size());
         selectCountry.selectByIndex(index);
 
     }
-    public void verifyStoreFinderCitySelection(){
-        Select selectCity=new Select(selectCityButton);
 
-        List<WebElement>allCities= selectCity.getAllSelectedOptions();
+    public void verifyStoreFinderCitySelection() {
+        Select selectCity = new Select(selectCityButton);
 
-        Random random=new Random();
-        int index= random.nextInt(allCities.size());
+        List<WebElement> allCities = selectCity.getAllSelectedOptions();
+
+        Random random = new Random();
+        int index = random.nextInt(allCities.size());
         selectCity.selectByIndex(index);
     }
 
@@ -157,10 +158,43 @@ public class BottegaVeneta {
     public WebElement resetPasswordSubmitButton;
     @FindBy(css = "div.c-popin__head button[data-ref=\"closePopinTrigger\"]:nth-child(3)")
     public WebElement closeResetPasswordEmailSentWindow;
+    @FindBy(css = "h1.c-product__name")
+    public WebElement productHeaderText;
+    @FindBy(css = "p.c-product__longdesc")
+    public WebElement usageDetails;
+    @FindBy(css = "ul.c-product__detailinfo")
+    public WebElement materialInfo;
+    @FindBy(css = "p.c-product__shortdesc")
+    public WebElement sizeInfo;
+    @FindBy(css = "p.c-product__id")
+    public WebElement productCode;
+    @FindBy(css = "span.c-product__madein")
+    public WebElement productionPlace;
     @FindBy(xpath = "//div[.='E-mail sent']")
     public WebElement resetPasswordEmailSentText;
+    @FindBy(xpath = "//div[.='Careers']")
+    public WebElement enfOfPage;
     @FindBy(xpath = "(//label[contains(text(),'E-mail')])[3]")
     public WebElement insertEmailBox;
+    @FindBy(xpath = "//*[contains(text(),'Product details')]")
+    public WebElement productDetailsButton;
+    @FindAll(@FindBy(css = "a.c-product__link.c-product__focus"))
+    public List<WebElement> allSearchResults;
 
+    public void selectAnyItemFromSearchResult() {
+        Random random = new Random();
+        int index = random.nextInt(allSearchResults.size());
+        ReusableMethods.jsClick(allSearchResults.get(index));
+    }
+
+    public void verifyAllProductDetailsVisibility(){
+        Assert.assertTrue(usageDetails.isDisplayed());
+        Assert.assertTrue(materialInfo.isDisplayed());
+        Assert.assertTrue(sizeInfo.isDisplayed());
+        ReusableMethods.jsScroll(productionPlace);
+        Assert.assertTrue(productionPlace.isDisplayed());
+        ReusableMethods.jsScroll(productCode);
+        Assert.assertTrue(productCode.isDisplayed());
+    }
 
 }
