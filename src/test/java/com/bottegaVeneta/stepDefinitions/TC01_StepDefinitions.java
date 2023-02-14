@@ -1,11 +1,9 @@
 package com.bottegaVeneta.stepDefinitions;
 
 import com.bottegaVeneta.pages.BottegaVeneta;
-import com.bottegaVeneta.utilities.ConfigurationReader;
 import com.bottegaVeneta.utilities.Driver;
 import com.bottegaVeneta.utilities.ReusableMethods;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
@@ -58,6 +56,13 @@ public class TC01_StepDefinitions {
     }
 
 
+    @And("Do not enter anything into the required fields and Click Create My Profile button")
+    public void clickCreateMyProfileButtonDoNotEnterAnythingIntoTheRequiredFields() {
+        ReusableMethods.jsScrollClick(pageObject.registerFormButton);
+    }
 
-
+    @Then("Related warning messages should be displayed for the respective fields")
+    public void relatedWarningMessagesShouldBeDisplayedForTheRespectiveFields() {
+        pageObject.verifyAllWarningMessages();
+    }
 }

@@ -1,7 +1,7 @@
 @TC02
 Feature: Search Functionality
 
-  Background: For the scenarios in the Search Functionality, user is expected to be on on the library login page
+  Background: For the scenarios in the Search Functionality, user is expected to be on on the  homepage
     Given Open the Application URL in any supported browser
 
   @Placeholder

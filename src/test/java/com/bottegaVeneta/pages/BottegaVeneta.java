@@ -5,9 +5,13 @@ import com.bottegaVeneta.utilities.ReusableMethods;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
+import java.util.Random;
 
 public class BottegaVeneta {
     public BottegaVeneta() {
@@ -22,6 +26,8 @@ public class BottegaVeneta {
     public WebElement myAccountButton;
     @FindBy(xpath = "//*[contains(text(),'Create my profile')]")
     public WebElement createMyProfileButton;
+    @FindBy(xpath = "//*[contains(text(),'Store Locator')]")
+    public WebElement storeLocatorButton;
     @FindBy(css = "h1.c-registerinfo__headertitle")
     public WebElement createMyProfileText;
     @FindBy(css = "div.c-card__header.c-card__header--createaccount h1.c-card__title")
@@ -38,8 +44,7 @@ public class BottegaVeneta {
                 .sendKeys(Keys.TAB)
                 .sendKeys(ReusableMethods.getFaker().name().lastName())
                 .sendKeys(Keys.TAB)
-                .sendKeys(Keys.BACK_SPACE+"12/12/2000")
-                //.sendKeys(ReusableMethods.getFaker().number().numberBetween(1, 31) + ""+ReusableMethods.getFaker().number().numberBetween(1, 12) + ""+ReusableMethods.getFaker().number().numberBetween(1900, 2023) + "")
+                .sendKeys(ReusableMethods.getFaker().date().birthday(18,100)+"")
                 .sendKeys(Keys.TAB)
                 .sendKeys(ReusableMethods.getFaker().internet().emailAddress())
                 .sendKeys(Keys.TAB)
@@ -65,6 +70,8 @@ public class BottegaVeneta {
     public WebElement signupNewsletterBox;
     @FindBy(xpath = "//*[contains(text(),'Request Received')]")
     public WebElement requestReceivedWindow;
+    @FindBy(xpath = "//*[contains(text(),'Choose')]")
+    public WebElement storeChooseButton;
     @FindBy(xpath = "(//button[@data-ref=\"closePopinTrigger\"])[11]")
     public WebElement closeRequestReceivedWindow;
     @FindBy(css = "div.c-topsearch__result input.c-form__input")
@@ -95,4 +102,46 @@ public class BottegaVeneta {
         Assert.assertEquals(expectedErrorMessageContent,actualErrorMessageContent);
 
     }
+
+    @FindBy(css = "button#registerFormBtn")
+    public WebElement registerFormButton;
+
+    @FindAll(@FindBy(css = "div.c-form__error p"))
+    public List<WebElement> allWarningMessages;
+
+    public void verifyAllWarningMessages(){
+        int expectedNumberOfAllWarningMessages=7;
+        int actualNumberOfAllWarningMessages=allWarningMessages.size();
+        System.out.println(actualNumberOfAllWarningMessages);
+        Assert.assertEquals(expectedNumberOfAllWarningMessages,actualNumberOfAllWarningMessages);
+    }
+
+    @FindBy(css = "h1.c-storelocator__title")
+    public WebElement storeFinderHeader;
+    @FindBy(css = "select[data-ref=\"country\"]")
+    public WebElement selectCountryButton;
+    @FindBy(css = "select[data-ref=\"city\"]")
+    public WebElement selectCityButton;
+
+    public void verifyStoreFinderCountrySelection(){
+        Select selectCountry=new Select(selectCountryButton);
+
+        List<WebElement>allCountries= selectCountry.getAllSelectedOptions();
+
+        Random random=new Random();
+        int index= random.nextInt(allCountries.size());
+        selectCountry.selectByIndex(index);
+
+    }
+    public void verifyStoreFinderCitySelection(){
+        Select selectCity=new Select(selectCityButton);
+
+        List<WebElement>allCities= selectCity.getAllSelectedOptions();
+
+        Random random=new Random();
+        int index= random.nextInt(allCities.size());
+        selectCity.selectByIndex(index);
+    }
+
+
 }
