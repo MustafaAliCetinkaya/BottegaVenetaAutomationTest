@@ -143,5 +143,24 @@ public class BottegaVeneta {
         selectCity.selectByIndex(index);
     }
 
+    @FindBy(css = "div.c-storeList")
+    public WebElement storeDetails;
+    @FindBy(css = "div[class=\"c-topaccount__login u-hidden@lg\"]")
+    public WebElement myAccountIcon;
+    @FindBy(css = "ul#help-links-container li:nth-child(1)")
+    public WebElement forgottenPasswordLink;
+    @FindBy(css = "form#email-form input")
+    public WebElement resetPasswordBox;
+
+    //@FindBy(css = "button#submitEmailButton:nth-of-type(2)")
+    @FindBy(xpath = "//button[contains(text(),'Submit')]")
+    public WebElement resetPasswordSubmitButton;
+    @FindBy(css = "div.c-popin__head button[data-ref=\"closePopinTrigger\"]:nth-child(3)")
+    public WebElement closeResetPasswordEmailSentWindow;
+    @FindBy(xpath = "//div[.='E-mail sent']")
+    public WebElement resetPasswordEmailSentText;
+    @FindBy(xpath = "(//label[contains(text(),'E-mail')])[3]")
+    public WebElement insertEmailBox;
+
 
 }

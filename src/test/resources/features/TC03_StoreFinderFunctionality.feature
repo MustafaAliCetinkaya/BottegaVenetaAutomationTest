@@ -13,3 +13,4 @@ Feature: Store Finder Functionality
     And   Select a country from the dropdown button
     And   Select a city from the dropdown button
     And   Click on the choose button
+    Then User should be able to see the store contact details
