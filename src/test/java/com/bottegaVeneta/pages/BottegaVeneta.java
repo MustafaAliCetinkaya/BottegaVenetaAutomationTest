@@ -93,7 +93,7 @@ public class BottegaVeneta {
         searchBox.sendKeys(product);
     }
 
-    @FindBy(css = "ul.c-search__filtersbody li.c-search__filtersitem.c-search__filtersitem--active a.c-search__itemlink")
+    @FindBy(css = "p.l-searchresults__searched")
     public WebElement allResultsText;
 
     public void verifySearchResultErrorContent() {

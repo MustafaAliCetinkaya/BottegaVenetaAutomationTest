@@ -44,7 +44,7 @@ public class TC02_StepDefinitions {
 
     @Then("Searched product should be displayed in the search results")
     public void searchedProductShouldBeDisplayedInTheSearchResults() {
-        Assert.assertTrue(pageObject.allResultsText.isDisplayed());
+        Assert.assertTrue(pageObject.allResultsText.getText().contains("bags"));
     }
 
     @When("Enter non existing product name into the Search text box field")
