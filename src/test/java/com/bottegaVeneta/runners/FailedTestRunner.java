@@ -10,4 +10,5 @@ import org.junit.runner.*;
         features = "@target/rerun.txt"
 )
 public class FailedTestRunner {
+
 }
