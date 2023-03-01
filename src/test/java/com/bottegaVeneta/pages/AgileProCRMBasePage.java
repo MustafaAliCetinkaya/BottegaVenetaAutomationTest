@@ -42,7 +42,7 @@ public class AgileProCRMBasePage {
 
             loginButton.click();
             Driver.getDriver().navigate().refresh();
-            BrowserUtils.clickWithJS(usernameButton);
+            usernameButton.click();
             logoutButton.click();
 
 
@@ -52,7 +52,7 @@ public class AgileProCRMBasePage {
 
             loginButton.click();
             Driver.getDriver().navigate().refresh();
-            BrowserUtils.clickWithJS(usernameButton);
+            usernameButton.click();
             logoutButton.click();
 
 
@@ -62,7 +62,7 @@ public class AgileProCRMBasePage {
 
             loginButton.click();
             Driver.getDriver().navigate().refresh();
-            BrowserUtils.clickWithJS(usernameButton);
+            usernameButton.click();
             logoutButton.click();
 
         }
