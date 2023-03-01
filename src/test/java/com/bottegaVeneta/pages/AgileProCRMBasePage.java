@@ -41,8 +41,8 @@ public class AgileProCRMBasePage {
             passwordBox.sendKeys(password);
 
             loginButton.click();
-            BrowserUtils.clickWithJS(usernameButton);
             Driver.getDriver().navigate().refresh();
+            BrowserUtils.clickWithJS(usernameButton);
             logoutButton.click();
 
 
@@ -51,8 +51,8 @@ public class AgileProCRMBasePage {
             passwordBox.sendKeys(password);
 
             loginButton.click();
-            BrowserUtils.clickWithJS(usernameButton);
             Driver.getDriver().navigate().refresh();
+            BrowserUtils.clickWithJS(usernameButton);
             logoutButton.click();
 
 
@@ -61,8 +61,8 @@ public class AgileProCRMBasePage {
             passwordBox.sendKeys(password);
 
             loginButton.click();
-            BrowserUtils.clickWithJS(usernameButton);
             Driver.getDriver().navigate().refresh();
+            BrowserUtils.clickWithJS(usernameButton);
             logoutButton.click();
 
         }
