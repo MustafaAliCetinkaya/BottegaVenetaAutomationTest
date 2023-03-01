@@ -42,27 +42,28 @@ public class AgileProCRMBasePage {
 
             loginButton.click();
             BrowserUtils.clickWithJS(usernameButton);
+            Driver.getDriver().navigate().refresh();
             logoutButton.click();
 
 
-/*            usernameBox.clear();
+            usernameBox.clear();
             usernameBox.sendKeys(email.get(1) + i + domainName);
             passwordBox.sendKeys(password);
 
-            BrowserUtils.waitForPageToLoad(10);
-            BrowserUtils.clickWithJS(loginButton);
+            loginButton.click();
             BrowserUtils.clickWithJS(usernameButton);
-            BrowserUtils.clickWithJS(logoutButton);
+            Driver.getDriver().navigate().refresh();
+            logoutButton.click();
 
 
             usernameBox.clear();
             usernameBox.sendKeys(email.get(2) + i + domainName);
             passwordBox.sendKeys(password);
 
-            BrowserUtils.waitForPageToLoad(10);
-            BrowserUtils.clickWithJS(loginButton);
+            loginButton.click();
             BrowserUtils.clickWithJS(usernameButton);
-            BrowserUtils.clickWithJS(logoutButton);*/
+            Driver.getDriver().navigate().refresh();
+            logoutButton.click();
 
         }
     }
