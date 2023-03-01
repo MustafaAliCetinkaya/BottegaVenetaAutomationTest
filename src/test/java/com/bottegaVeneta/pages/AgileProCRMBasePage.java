@@ -2,6 +2,7 @@ package com.bottegaVeneta.pages;
 
 import com.bottegaVeneta.utilities.BrowserUtils;
 import com.bottegaVeneta.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -30,6 +31,12 @@ public class AgileProCRMBasePage {
     @FindBy(css = "input.login-btn")
     public WebElement loginButton;
 
+    @FindBy(xpath = "//a[.='Company']")
+    public WebElement companyLink;
+
+    @FindBy(xpath = "//span[.='Add News']")
+    public WebElement addNewsLink;
+
     public void login() {
         String password = "UserUser";
         String domainName = "@cybertekschool.com";
@@ -41,6 +48,12 @@ public class AgileProCRMBasePage {
             passwordBox.sendKeys(password);
 
             loginButton.click();
+            BrowserUtils.waitForClickablility(companyLink,20);
+            companyLink.click();
+            BrowserUtils.waitForVisibility(addNewsLink,20);
+            if(!addNewsLink.isDisplayed()){
+                System.out.println("User: "+email.get(0) + i+" ==> Add News button is not displayed");
+            }
             Driver.getDriver().navigate().refresh();
             usernameButton.click();
             logoutButton.click();
@@ -51,6 +64,12 @@ public class AgileProCRMBasePage {
             passwordBox.sendKeys(password);
 
             loginButton.click();
+            BrowserUtils.waitForClickablility(companyLink,20);
+            companyLink.click();
+            BrowserUtils.waitForVisibility(addNewsLink,20);
+            if(!addNewsLink.isDisplayed()){
+                System.out.println("User: "+email.get(0) + i+" ==> Add News button is not displayed");
+            }
             Driver.getDriver().navigate().refresh();
             usernameButton.click();
             logoutButton.click();
@@ -61,6 +80,12 @@ public class AgileProCRMBasePage {
             passwordBox.sendKeys(password);
 
             loginButton.click();
+            BrowserUtils.waitForClickablility(companyLink,20);
+            companyLink.click();
+            BrowserUtils.waitForVisibility(addNewsLink,20);
+            if(!addNewsLink.isDisplayed()){
+                System.out.println("User: "+email.get(0) + i+" ==> Add News button is not displayed");
+            }
             Driver.getDriver().navigate().refresh();
             usernameButton.click();
             logoutButton.click();
