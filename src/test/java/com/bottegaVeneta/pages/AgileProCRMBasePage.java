@@ -40,13 +40,12 @@ public class AgileProCRMBasePage {
             usernameBox.sendKeys(email.get(0) + i + domainName);
             passwordBox.sendKeys(password);
 
-            BrowserUtils.waitForPageToLoad(10);
-            BrowserUtils.clickWithJS(loginButton);
+            loginButton.click();
             BrowserUtils.clickWithJS(usernameButton);
-            BrowserUtils.clickWithJS(logoutButton);
+            logoutButton.click();
 
 
-            usernameBox.clear();
+/*            usernameBox.clear();
             usernameBox.sendKeys(email.get(1) + i + domainName);
             passwordBox.sendKeys(password);
 
@@ -63,7 +62,7 @@ public class AgileProCRMBasePage {
             BrowserUtils.waitForPageToLoad(10);
             BrowserUtils.clickWithJS(loginButton);
             BrowserUtils.clickWithJS(usernameButton);
-            BrowserUtils.clickWithJS(logoutButton);
+            BrowserUtils.clickWithJS(logoutButton);*/
 
         }
     }
