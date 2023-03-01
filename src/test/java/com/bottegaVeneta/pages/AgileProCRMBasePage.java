@@ -2,8 +2,6 @@ package com.bottegaVeneta.pages;
 
 import com.bottegaVeneta.utilities.BrowserUtils;
 import com.bottegaVeneta.utilities.Driver;
-import com.bottegaVeneta.utilities.ReusableMethods;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,11 +32,12 @@ public class AgileProCRMBasePage {
     @FindBy(css = "input.login-btn")
     public WebElement loginButton;
 
-    @FindBy(css = "#bx_left_menu_menu_about_sect > a:nth-child(3) > span:nth-child(1)")
+    @FindBy(css = "li#bx_left_menu_menu_about_sect a")
     public WebElement companyLink;
 
-    @FindBy(css = "li#bx_left_menu_menu_about_sect a")
+    @FindBy(xpath = "//span[.='Add News']")
     public WebElement addNewsLink;
+
 
     public void login() {
         String password = "UserUser";
@@ -51,23 +50,20 @@ public class AgileProCRMBasePage {
             passwordBox.sendKeys(password);
 
             loginButton.click();
-            BrowserUtils.waitForClickablility(companyLink,30);
+            BrowserUtils.waitForClickablility(companyLink, 30);
             companyLink.click();
-
-            BrowserUtils.waitForVisibility(addNewsLink,20);
-            if(addNewsLink.isDisplayed()){
-                System.out.println("User: "+email.get(0) + i+" ==> Add News button is displayed");
-                addNewsLink.click();
-
-                Select select=new Select(Driver.getDriver().findElement(By.name("PROP[3][]")));
-                List<WebElement>allDropdownOptions=select.getOptions();
-                for (WebElement element : allDropdownOptions) {
-                    String defaultSelection=element.findElement(By.cssSelector("option[selected=\"\"]")).getText();
-                    if(defaultSelection.equals("News")){
-                        System.out.println("Dropdown selection error: "+email.get(0) + i);
-                    }
-
+            try {
+                BrowserUtils.clickWithJS(addNewsLink);
+                WebElement dropdownElement = Driver.getDriver().findElement(By.xpath("(//div[@id='bx-admin-prefix'])[1]//select"));
+                BrowserUtils.waitForVisibility(dropdownElement, 30);
+                Select select = new Select(dropdownElement);
+                if (select.getFirstSelectedOption().getText().equals("News")) {
+                    System.out.println("Dropdown selection error: " + email.get(0) + i);
                 }
+            } catch (Exception exception) {
+                exception.printStackTrace();
+                System.out.println("User: " + email.get(0) + i + " ==> Add News button is not displayed");
+
             }
             Driver.getDriver().navigate().refresh();
             usernameButton.click();
@@ -79,11 +75,20 @@ public class AgileProCRMBasePage {
             passwordBox.sendKeys(password);
 
             loginButton.click();
-            BrowserUtils.waitForClickablility(companyLink,20);
+            BrowserUtils.waitForClickablility(companyLink, 20);
             companyLink.click();
-            BrowserUtils.waitForVisibility(addNewsLink,20);
-            if(!addNewsLink.isDisplayed()){
-                System.out.println("User: "+email.get(0) + i+" ==> Add News button is not displayed");
+            try {
+                BrowserUtils.clickWithJS(addNewsLink);
+                WebElement dropdownElement = Driver.getDriver().findElement(By.xpath("(//div[@id='bx-admin-prefix'])[1]//select"));
+                BrowserUtils.waitForVisibility(dropdownElement, 30);
+                Select select = new Select(dropdownElement);
+                if (select.getFirstSelectedOption().getText().equals("News")) {
+                    System.out.println("Dropdown selection error: " + email.get(1) + i);
+                }
+            } catch (Exception exception) {
+                exception.printStackTrace();
+                System.out.println("User: " + email.get(1) + i + " ==> Add News button is not displayed");
+
             }
             Driver.getDriver().navigate().refresh();
             usernameButton.click();
@@ -95,11 +100,20 @@ public class AgileProCRMBasePage {
             passwordBox.sendKeys(password);
 
             loginButton.click();
-            BrowserUtils.waitForClickablility(companyLink,20);
+            BrowserUtils.waitForClickablility(companyLink, 20);
             companyLink.click();
-            BrowserUtils.waitForVisibility(addNewsLink,20);
-            if(!addNewsLink.isDisplayed()){
-                System.out.println("User: "+email.get(0) + i+" ==> Add News button is not displayed");
+            try {
+                BrowserUtils.clickWithJS(addNewsLink);
+                WebElement dropdownElement = Driver.getDriver().findElement(By.xpath("(//div[@id='bx-admin-prefix'])[1]//select"));
+                BrowserUtils.waitForVisibility(dropdownElement, 30);
+                Select select = new Select(dropdownElement);
+                if (select.getFirstSelectedOption().getText().equals("News")) {
+                    System.out.println("Dropdown selection error: " + email.get(2) + i);
+                }
+            } catch (Exception exception) {
+                exception.printStackTrace();
+                System.out.println("User: " + email.get(2) + i + " ==> Add News button is not displayed");
+
             }
             Driver.getDriver().navigate().refresh();
             usernameButton.click();
