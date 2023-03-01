@@ -2,10 +2,13 @@ package com.bottegaVeneta.pages;
 
 import com.bottegaVeneta.utilities.BrowserUtils;
 import com.bottegaVeneta.utilities.Driver;
+import com.bottegaVeneta.utilities.ReusableMethods;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,10 +34,10 @@ public class AgileProCRMBasePage {
     @FindBy(css = "input.login-btn")
     public WebElement loginButton;
 
-    @FindBy(xpath = "//a[.='Company']")
+    @FindBy(css = "#bx_left_menu_menu_about_sect > a:nth-child(3) > span:nth-child(1)")
     public WebElement companyLink;
 
-    @FindBy(xpath = "//span[.='Add News']")
+    @FindBy(css = "li#bx_left_menu_menu_about_sect a")
     public WebElement addNewsLink;
 
     public void login() {
@@ -48,11 +51,23 @@ public class AgileProCRMBasePage {
             passwordBox.sendKeys(password);
 
             loginButton.click();
-            BrowserUtils.waitForClickablility(companyLink,20);
+            BrowserUtils.waitForClickablility(companyLink,30);
             companyLink.click();
+
             BrowserUtils.waitForVisibility(addNewsLink,20);
-            if(!addNewsLink.isDisplayed()){
-                System.out.println("User: "+email.get(0) + i+" ==> Add News button is not displayed");
+            if(addNewsLink.isDisplayed()){
+                System.out.println("User: "+email.get(0) + i+" ==> Add News button is displayed");
+                addNewsLink.click();
+
+                Select select=new Select(Driver.getDriver().findElement(By.name("PROP[3][]")));
+                List<WebElement>allDropdownOptions=select.getOptions();
+                for (WebElement element : allDropdownOptions) {
+                    String defaultSelection=element.findElement(By.cssSelector("option[selected=\"\"]")).getText();
+                    if(defaultSelection.equals("News")){
+                        System.out.println("Dropdown selection error: "+email.get(0) + i);
+                    }
+
+                }
             }
             Driver.getDriver().navigate().refresh();
             usernameButton.click();
