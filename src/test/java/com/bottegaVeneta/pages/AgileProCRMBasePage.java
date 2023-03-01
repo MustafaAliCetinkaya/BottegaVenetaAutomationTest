@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AgileProCRMPage {
-    public AgileProCRMPage() {
+public class AgileProCRMBasePage {
+    public AgileProCRMBasePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
