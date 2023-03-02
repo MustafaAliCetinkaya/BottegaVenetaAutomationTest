@@ -12,16 +12,19 @@ dryRun = false --> this will turn off dryRun, and our code will run as expected.
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {
-                "json:target/cucumber.json",
-                "html:target/cucumber/report.html",
-                "junit:target/junit/junit-report.xml",
+                //"pretty", not necessary. Because basically it just prints out additional information about the scenario that is being executed.
+                "html:target/cucumber-report.html",
                 "rerun:target/rerun.txt",
+                "me.jvt.cucumber.report.PrettyReports:target/cucumber",
         },
         features = "src/test/resources/features",
-        publish = true //will enable a functionality from cucumber to generate a public daily link for the report of our final execution of our code
+        glue = "com/bottegaVeneta/stepDefinitions",
+        tags = "@TCAddingAndRemovingImages",
+        dryRun = false
+        //publish = true will enable a functionality from cucumber to generate a public daily link for the report of our final execution of our code
 
 )
 
-public class CukesRunner {
+public class BottegaRunner {
 
 }
