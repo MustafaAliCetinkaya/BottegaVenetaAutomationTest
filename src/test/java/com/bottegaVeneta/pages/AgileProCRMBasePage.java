@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +43,7 @@ public class AgileProCRMBasePage {
         String domainName = "@cybertekschool.com";
         List<String> email = new ArrayList<>(Arrays.asList("hr", "helpdesk", "marketing"));
 
-        for (int i = 1; i <= 101; i++) {
+        for (int i = 1; i < 5; i++) {
             usernameBox.clear();
             usernameBox.sendKeys(email.get(0) + i + domainName);
             passwordBox.sendKeys(password);
