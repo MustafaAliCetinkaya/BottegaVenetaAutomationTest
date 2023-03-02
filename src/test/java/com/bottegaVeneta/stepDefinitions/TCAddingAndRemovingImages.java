@@ -15,7 +15,7 @@ public class TCAddingAndRemovingImages {
 
     AgileProCRMBasePage pageObject = new AgileProCRMBasePage();
 
-    @Given("Open the Application URL in any supported browser in order to login the system")
+    @Given("^Open the Application URL in any supported browser in order to login the system$")
     public void open_the_application_url_in_any_supported_browser_in_order_to_login_the_system() {
         Driver.getDriver().get(ConfigurationReader.getProperty("AgileProCRM"));
     }
