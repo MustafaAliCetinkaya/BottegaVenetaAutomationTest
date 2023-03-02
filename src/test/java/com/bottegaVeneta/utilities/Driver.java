@@ -45,10 +45,14 @@ public class Driver {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
+                    driver.manage().window().maximize();
+                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                     break;
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
+                    driver.manage().window().maximize();
+                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
@@ -57,6 +61,8 @@ public class Driver {
                 case "firefox-headless":
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
+                    driver.manage().window().maximize();
+                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                     break;
 
                 case "ie":
@@ -65,6 +71,8 @@ public class Driver {
                     }
                     WebDriverManager.iedriver().setup();
                     driver = new InternetExplorerDriver();
+                    driver.manage().window().maximize();
+                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                     break;
 
                 case "edge":
@@ -73,6 +81,8 @@ public class Driver {
                     }
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
+                    driver.manage().window().maximize();
+                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                     break;
 
                 case "safari":
@@ -81,6 +91,8 @@ public class Driver {
                     }
                     WebDriverManager.getInstance(SafariDriver.class).setup();
                     driver = new SafariDriver();
+                    driver.manage().window().maximize();
+                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                     break;
             }
         }
