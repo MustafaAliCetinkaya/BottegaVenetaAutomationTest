@@ -40,6 +40,16 @@ public class AgileProCRMBasePage {
     @FindBy(xpath = "//span[.='Insert file path']")
     public WebElement insertFilePathOption;
 
+    @FindBy(xpath = "//span[.='Add']")
+    public WebElement addButton;
+
+    @FindBy(xpath = "//span[.='Save']")
+    public WebElement saveButtonOnImageEditor;
+
+
+    @FindBy(xpath = "//span[.='Now loading...']")
+    public WebElement loadingBar;
+
     @FindBy(css = "span#tab_cont_cedit2")
     public WebElement detailsButton;
 
@@ -48,6 +58,24 @@ public class AgileProCRMBasePage {
 
     @FindBy(css = "span#bx_file_detail_picture_add")
     public WebElement addImageDropdown;
+
+    @FindBy(css = "input#savebtn")
+    public WebElement saveButtonOnAddNewsTab;
+
+    @FindBy(css = "div.adm-fileinput-item-preview-img span span canvas")
+    public WebElement uploadedPictureInRectangularBox;
+
+    @FindBy(css = "input#bx_file_detail_picturefilePath_0_path")
+    public WebElement insertFilePathBox;
+
+
+    @FindBy(css = "span.adm-fileinput-item-panel-btn.adm-btn-del")
+    public WebElement deleteWithXButton;
+
+
+    @FindBy(css = "span#bx_file_detail_pictureNotice")
+    public WebElement dragDropText;
+
 
     /*public void selectFromDropdownByIndex(int index){
         dropdown.click();

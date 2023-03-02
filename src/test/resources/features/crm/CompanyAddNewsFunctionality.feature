@@ -21,7 +21,7 @@ Feature: Adding and removing images functionality ( As a user, I should be able 
     Then User should be able to see the loading bar after the add button is clicked.
     Then User should be able to see the uploaded image in the rectangular box.
     And  User clicks on the X icon which is located on the lower right corner of the uploaded image in order to remove the image, after image is loaded and seen in the rectangular box.
-    Then User should be able to see (Drag&Drop) Drag an image text when the image is removed from the box.
+    Then User should be able to see Drag&Drop an image text when the image is removed from the box.
     Examples:
       | username                      | password |
       | helpdesk1@cybertekschool.com  | UserUser |

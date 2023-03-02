@@ -4,7 +4,6 @@ import com.bottegaVeneta.pages.AgileProCRMBasePage;
 import com.bottegaVeneta.utilities.BrowserUtils;
 import com.bottegaVeneta.utilities.ConfigurationReader;
 import com.bottegaVeneta.utilities.Driver;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -71,30 +70,42 @@ public class TCAddingAndRemovingImages {
 
     @And("User clicks on the insert file path option from the opened dropdown menu.")
     public void userClicksOnTheInsertFilePathOptionFromTheOpenedDropdownMenu() {
-    pageObject.insertFilePathOption.click();
+        pageObject.insertFilePathOption.click();
     }
 
     @And("User pastes pathname of the selected image into the automatically opened input box which is label as {string}.")
     public void userPastesPathnameOfTheSelectedImageIntoTheAutomaticallyOpenedInputBoxWhichIsLabelAs(String arg0) {
+        String path = "/Users/mustafacetinkaya/Desktop/collections.png";
+        pageObject.insertFilePathBox.sendKeys(path);
     }
 
     @And("User clicks on the add button.")
     public void userClicksOnTheAddButton() {
+        pageObject.addButton.click();
     }
 
     @Then("User should be able to see the loading bar after the add button is clicked.")
     public void userShouldBeAbleToSeeTheLoadingBarAfterTheAddButtonIsClicked() {
+        pageObject.loadingBar.isDisplayed();
     }
 
     @Then("User should be able to see the uploaded image in the rectangular box.")
     public void userShouldBeAbleToSeeTheUploadedImageInTheRectangularBox() {
+        try {
+            pageObject.saveButtonOnImageEditor.click();
+            pageObject.uploadedPictureInRectangularBox.isDisplayed();
+        }catch (Exception exception){
+            exception.printStackTrace();
+        }
     }
 
     @And("User clicks on the X icon which is located on the lower right corner of the uploaded image in order to remove the image, after image is loaded and seen in the rectangular box.")
     public void userClicksOnTheXIconWhichIsLocatedOnTheLowerRightCornerOfTheUploadedImageInOrderToRemoveTheImageAfterImageIsLoadedAndSeenInTheRectangularBox() {
+    pageObject.deleteWithXButton.click();
     }
 
-    @Then("User should be able to see \\(Drag&Drop) Drag an image text when the image is removed from the box.")
+    @Then("User should be able to see Drag&Drop an image text when the image is removed from the box.")
     public void userShouldBeAbleToSeeDragDropDragAnImageTextWhenTheImageIsRemovedFromTheBox() {
+    pageObject.dragDropText.isDisplayed();
     }
 }
