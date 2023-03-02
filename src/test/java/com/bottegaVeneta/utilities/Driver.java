@@ -3,102 +3,95 @@ package com.bottegaVeneta.utilities;
 import io.github.bonigarcia.wdm.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.net.URL;
 import java.util.concurrent.*;
 
 public class Driver {
+    static String browser;
 
-    /*
-    Creating a private constructor, so we are closing
-    access to the object of this class from outside the class
-     */
-    private Driver(){}
+    private Driver() {
+    }
 
-    /*
-    We make WebDriver private, because we want to close access from outside the class.
-    We make it static because we will use it in a static method.
-     */
-    private static WebDriver driver; // value is null by default
+    private static WebDriver driver;
 
-    /*
-    Create a re-usable utility method which will return same driver instance when we call it
-     */
-    public static WebDriver getDriver(){
-
-        if (driver == null){
-
-            /*
-            We read our browserType from configuration.properties.
-            This way, we can control which browser is opened from outside our code, from configuration.properties.
-             */
-            String browserType = ConfigurationReader.getProperty("browser");
-
-
-            /*
-                Depending on the browserType that will be return from configuration.properties file
-                switch statement will determine the case, and open the matching browser
-            */
-            switch (browserType){
-
+    public static WebDriver getDriver() {
+        if (driver == null) {
+            if (System.getProperty("BROWSER") == null) {
+                browser = ConfigurationReader.getProperty("browser");
+            } else {
+                browser = System.getProperty("BROWSER");
+            }
+            System.out.println("Browser: " + browser);
+            switch (browser) {
+                case "remote-chrome":
+                    try {
+                        // assign your grid server address
+                        String gridAddress = "44.202.197.211";
+                        URL url = new URL("http://" + gridAddress + ":4444/wd/hub");
+                        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+                        desiredCapabilities.setBrowserName("chrome");
+                        driver = new RemoteWebDriver(url, desiredCapabilities);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
-                    driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
                     break;
-
-                case "safari" :
-                    WebDriverManager.safaridriver().setup();
-                    driver=new SafariDriver();
-                    driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+                case "chrome-headless":
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
                     break;
-
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
-                    driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+                    break;
+                case "firefox-headless":
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
                     break;
 
-                default:
-                    System.out.println("Unknown browser type: "+browserType);
-                    driver=null;
+                case "ie":
+                    if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+                        throw new WebDriverException("Your operating system does not support the requested browser");
+                    }
+                    WebDriverManager.iedriver().setup();
+                    driver = new InternetExplorerDriver();
+                    break;
 
+                case "edge":
+                    if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+                        throw new WebDriverException("Your operating system does not support the requested browser");
+                    }
+                    WebDriverManager.edgedriver().setup();
+                    driver = new EdgeDriver();
+                    break;
+
+                case "safari":
+                    if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+                        throw new WebDriverException("Your operating system does not support the requested browser");
+                    }
+                    WebDriverManager.getInstance(SafariDriver.class).setup();
+                    driver = new SafariDriver();
+                    break;
             }
         }
 
         return driver;
-
     }
 
-    /*
-    This method will make sure our driver value is always null after using quit() method
-     */
-    public static void closeDriver(){
-        if (driver != null){
-            driver.quit(); // this line will terminate the existing session. Value will not even be null
+    public static void closeDriver() {
+        if (driver != null) {
+            driver.quit();
             driver = null;
         }
     }
 }
-
-   /*
-    POM'de Driver icin TestBase class'ina extends etmek yerine
-    Driver class'indan static methodlar kullanarak
-    driver olusturdum, ilgili ayarlarin yapilmasi
-    ve en sonda driver'in kapatilmasini tercih ettim.
-
-    POM'de Driver class'indaki getDriver()'in obje olusturularak kullanilmasini
-    engellemek icin
-    Singleton pattern kullanimi benimsenmistir
-
-    Singleton Pattern : tekli kullanim, bir class'in farkli class'lardan
-                        obje olusturarak kullanimini engellemek icin kullanilir
-
-    Bunu saglamak icin yapmamiz gereken sey oldukca basit
-    obje olusturmak icin kullanilan constructor'i private yaptiginizda
-    baska class'larda Driver class'indan obje olusturulmasi mumkun OLMAZ
-     */
