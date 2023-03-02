@@ -17,7 +17,7 @@ dryRun = false --> this will turn off dryRun, and our code will run as expected.
                 "junit:target/junit/junit-report.xml",
                 "rerun:target/rerun.txt",
         },
-        features = "src/test/resources/features",
+        features = "src/test/resources/features/crm",
         publish = true //will enable a functionality from cucumber to generate a public daily link for the report of our final execution of our code
 
 )
