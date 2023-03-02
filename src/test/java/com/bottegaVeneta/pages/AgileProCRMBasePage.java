@@ -37,8 +37,26 @@ public class AgileProCRMBasePage {
     @FindBy(xpath = "//span[.='Add News']")
     public WebElement addNewsLink;
 
+    @FindBy(xpath = "//span[.='Insert file path']")
+    public WebElement insertFilePathOption;
 
-    public void login() {
+    @FindBy(css = "span#tab_cont_cedit2")
+    public WebElement detailsButton;
+
+    @FindBy(css = "a#bx_file_detail_pictureThumbModePreview")
+    public WebElement uploadImageIcon;
+
+    @FindBy(css = "span#bx_file_detail_picture_add")
+    public WebElement addImageDropdown;
+
+    /*public void selectFromDropdownByIndex(int index){
+        dropdown.click();
+        Select select=new Select(dropdown);
+        select.selectByIndex(index);
+    }*/
+
+
+    public void loginAndCheckAddNewsButton() {
         String password = "UserUser";
         String domainName = "@cybertekschool.com";
         List<String> email = new ArrayList<>(Arrays.asList("hr", "helpdesk", "marketing"));

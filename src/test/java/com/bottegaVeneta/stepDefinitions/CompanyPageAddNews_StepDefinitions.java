@@ -9,7 +9,7 @@ public class CompanyPageAddNews_StepDefinitions extends AgileProCRMBasePage {
     @Test
     public void loginTest(){
         Driver.getDriver().get(ConfigurationReader.getProperty("AgileProCRM"));
-        login();
+        loginAndCheckAddNewsButton();
         Driver.closeDriver();
     }
 }

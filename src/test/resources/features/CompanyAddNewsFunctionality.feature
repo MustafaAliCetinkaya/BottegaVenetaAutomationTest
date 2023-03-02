@@ -3,7 +3,8 @@ Feature: Adding and removing images functionality ( As a user, I should be able 
 
   Background: For the scenarios in the adding and removing images functionality, , user is expected to be logged into on the system.
     Given Open the Application URL in any supported browser in order to login the system
-@AddingByUsingImagePath
+
+  @AddingByUsingImagePath
   Scenario Outline: User should be able to add and remove a picture under details tab
     When User writes the  "<username>" into the username box in the authorization window.
     When User writes the  "<password>" into the password box in the authorization window.
