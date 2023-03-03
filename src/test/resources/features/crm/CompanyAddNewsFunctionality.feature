@@ -24,14 +24,14 @@ Feature: Adding and removing images functionality ( As a user, I should be able 
     Then User should be able to see Drag&Drop an image text when the image is removed from the box.
     Examples:
       | username                      | password |
-      | helpdesk1@cybertekschool.com  | UserUser |
       | hr1@cybertekschool.com        | UserUser |
+      | helpdesk1@cybertekschool.com  | UserUser |
       | marketing1@cybertekschool.com | UserUser |
-      | helpdesk2@cybertekschool.com  | UserUser |
       | hr2@cybertekschool.com        | UserUser |
+      | helpdesk2@cybertekschool.com  | UserUser |
       | marketing2@cybertekschool.com | UserUser |
-      | helpdesk3@cybertekschool.com  | UserUser |
       | hr3@cybertekschool.com        | UserUser |
+      | helpdesk3@cybertekschool.com  | UserUser |
       | marketing3@cybertekschool.com | UserUser |
       | helpdesk4@cybertekschool.com  | UserUser |
       | hr4@cybertekschool.com        | UserUser |
