@@ -13,7 +13,6 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt",
         },
         features = "/Users/mustafacetinkaya/IdeaProjects/BottegaVenetaAutomationTest/src/test/resources/features/crm",
-        glue = "com/bottegaVeneta/stepDefinitions",
         publish = true //will enable a functionality from cucumber to generate a public daily link for the report of our final execution of our code
 
 )
