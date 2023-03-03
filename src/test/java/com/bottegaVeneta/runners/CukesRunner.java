@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
                 "junit:target/junit/junit-report.xml",
                 "rerun:target/rerun.txt",
         },
-        features = "/Users/mustafacetinkaya/IdeaProjects/BottegaVenetaAutomationTest/src/test/resources/features/crm",
+        features = "src/test/resources/features/crm",
         publish = true //will enable a functionality from cucumber to generate a public daily link for the report of our final execution of our code
 
 )
