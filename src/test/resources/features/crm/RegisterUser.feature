@@ -3,7 +3,7 @@ Feature: Register Functionality
 
   //Background: For the scenarios in the Search Functionality, user is expected to be on on the homepage
 
-  @Register
+  @Register @Smoke
   Scenario: Register User
     Given Open the Application URL in any supported browser
     Then  Verify that home page is visible successfully

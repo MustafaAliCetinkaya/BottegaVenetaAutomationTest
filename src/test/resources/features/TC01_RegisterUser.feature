@@ -4,7 +4,6 @@ Feature: Register Functionality
   Background: For the scenarios in the Search Functionality, user is expected to be on on the homepage
     Given Open the Application URL in any supported browser
 
-
   @Register
   Scenario: Register User
     Then  Verify that home page is visible successfully
